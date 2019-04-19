@@ -1,0 +1,16 @@
+{
+  "id": 0,
+  "intubacja": false,
+  "wiek": 1,
+  "plecMeska": false,
+  "plecKobieta": false,
+  "wzrost": 0,
+  "waga": 0.0,
+  "punktacjaApache": 1,
+  "kodRozpoznania": 0,
+  "przyjetySor": false,
+  "blokOperacyjny": false,
+  "innyOddzial": false,
+  "innySzpital": false,
+  "dps": false
+}

@@ -1,0 +1,174 @@
+{
+  "day": 1,
+  "id": 1,
+  "czasDoby": 2,
+  "inwazyjneMw": true,
+  "nieinwazyjneMw": true,
+  "wazopresory": true,
+  "noradrenalina": false,
+  "adrenalina": true,
+  "dobutamina": true,
+  "dopamina": false,
+  "dializa": true,
+  "ihd": false,
+  "cvvhd": false,
+  "cvvhf": true,
+  "cvvhdf": false,
+  "wbc": 0.0,
+  "rbc": 0.0,
+  "hb": 0.0,
+  "plt": 0.0,
+  "hco3": 0.0,
+  "na": 3.0,
+  "k": 0.0,
+  "cl": 2.0,
+  "crea": 0.0,
+  "albuminy": 0.0,
+  "ca": 0.0,
+  "mg": 0.0,
+  "ri": 0.0,
+  "crp": 0.0,
+  "pct": 0.0,
+  "rehabilitacja": true,
+  "nowyAntybiotyk": true,
+  "zmianaAntybiotyk": true,
+  "infekcjaOddechowa": false,
+  "infekcjaKrwiopochodna": false,
+  "infekcjaJamyBrzusznej": false,
+  "infekcjaUkladuMoczowego": true,
+  "infekcjaInne": false,
+  "pantoprazol": false,
+  "metoklopramid": false,
+  "laktuloza": true,
+  "enema": true,
+  "bisakodyl": false,
+  "lekiZwiotczajace": true,
+  "opioidy": false,
+  "Morfina": 0.0,
+  "Oksykodon": 0.0,
+  "Propofol": 0.0,
+  "Midazolam": 0.0,
+  "Fentanyl": 0.0,
+  "Dexdor": 0.0,
+  "Ketamina": 0.0,
+  "Estazolam": 0.0,
+  "Tiopental": 0.0,
+  "IsAntybiotyki": true,
+  "Antybiotyki": {
+    "isBetaLaktamy": false,
+    "BetaLaktamy": {
+      "Ampicylina": false,
+      "Amoksycylina": false,
+      "Kloksacylina": false,
+      "Augumentin": false,
+      "Piperacylina": false
+    },
+    "isCefalosporyny": false,
+    "Cefalosporyny": {
+      "Ceftriakson": false,
+      "Cefaleksyna": false,
+      "Cefpodoksym": false,
+      "Cefotaksym": false,
+      "Cefuroksym": false,
+      "Cefepim": false
+    },
+    "isKarbapenemy": false,
+    "Karbapenemy": {
+      "Meropenem": false
+    },
+    "isAminoglikozydy": false,
+    "Aminoglikozydy": {
+      "Gentamycyna": false,
+      "Tobramycyna": false,
+      "Amikacyna": false
+    },
+    "isChinolony": false,
+    "Chinolony": {
+      "Lewofloksacyna": false,
+      "Ciprofloksacyna": false,
+      "Moksyfloksacyna": false
+    },
+    "isTetracykliny": false,
+    "Tetracykliny": {
+      "Tygecyklina": false
+    },
+    "isNitromidazole": false,
+    "Nitromidazole": {
+      "MetronidazolIv": false,
+      "Metronidazolpo": false
+    },
+    "isLinkozamidy": false,
+    "Linkozamidy": {
+      "Klindamycyna": false
+    },
+    "isMakrolidy": false,
+    "Makrolidy": {
+      "Klarytromycyna": false,
+      "Azytromycyna": false
+    },
+    "isMonobaktamy": false,
+    "Monobaktamy": {
+      "Aztreonam": false
+    },
+    "isPrzeciwwirusowe": true,
+    "Przeciwwirusowe": {},
+    "isAzole": false,
+    "Azole": {
+      "Flukonazol": false,
+      "Worykonazol": false,
+      "Pozakonazol": false,
+      "Amfoterycyna": false
+    },
+    "isEchinokandydy": false,
+    "Echinokandydy": {
+      "Mikafungina": false
+    }
+  },
+  "IsZywienieEN": false,
+  "ZywienieEN": {
+    "dojelitowego": 0.0,
+    "procentCelu": 0.0,
+    "iloscWMl": 0.0,
+    "PrzeplywWMl": 0.0,
+    "wymioty": false,
+    "zalegania": false,
+    "naCzczo": false,
+    "krwawienie": false,
+    "Peptamen": false,
+    "Diason": false
+  },
+  "isZywienieTPN": false,
+  "ZywienieTPN": {
+    "iloscZywienia": 0.0,
+    "Przeplyw": 0.0,
+    "Standard01": false,
+    "Standard02": false
+  },
+  "isZywienieDoustna": false,
+  "ZywienieDoustna": {
+    "iloscZywienia": 0.0
+  },
+  "isZywienieNPO": true,
+  "isZywienieDodatkowaWoda": false,
+  "ZywienieDodatkowaWoda": {
+    "ileMl": 0.0
+  },
+  "jesc": false,
+  "pic": false,
+  "Stolec": {
+    "wyproznienie": true,
+    "iloscWyproznienia": 0.0,
+    "bristolskaWiekszaNiz6": false,
+    "krew": true,
+    "Flexiseal": true
+  },
+  "isOstatniDzien": false,
+  "OstatniDzien": {
+    "zgon": false,
+    "wypis": false,
+    "innyOddzial": false,
+    "DPS": false,
+    "dom": false,
+    "inne": false
+  }
+}
