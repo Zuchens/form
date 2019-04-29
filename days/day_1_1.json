@@ -1,0 +1,211 @@
+{
+  "day": 1,
+  "id": 1,
+  "czasDoby": 4,
+  "inwazyjneMw": true,
+  "nieinwazyjneMw": true,
+  "wazopresory": true,
+  "noradrenalina": false,
+  "adrenalina": false,
+  "dobutamina": true,
+  "dopamina": false,
+  "dializa": true,
+  "ihd": false,
+  "cvvhd": false,
+  "cvvhf": true,
+  "cvvhdf": false,
+  "wbc": 1.0,
+  "rbc": 1.0,
+  "hb": 1.0,
+  "plt": 1.0,
+  "hco3": 1.0,
+  "na": 1.0,
+  "k": 1.0,
+  "cl": 0.0,
+  "crea": 0.0,
+  "albuminy": 0.0,
+  "ca": 0.0,
+  "mg": 0.0,
+  "ri": 0.0,
+  "crp": 0.0,
+  "pct": 0.0,
+  "rehabilitacja": true,
+  "nowyAntybiotyk": true,
+  "zmianaAntybiotyk": true,
+  "infekcjaOddechowa": true,
+  "infekcjaKrwiopochodna": true,
+  "infekcjaJamyBrzusznej": true,
+  "infekcjaUkladuMoczowego": true,
+  "infekcjaInne": true,
+  "pantoprazol": true,
+  "metoklopramid": true,
+  "laktuloza": true,
+  "enema": true,
+  "bisakodyl": true,
+  "lekiZwiotczajace": true,
+  "opioidy": true,
+  "Morfina": 1.0,
+  "Oksykodon": 1.0,
+  "Propofol": 1.0,
+  "Midazolam": 0.0,
+  "Fentanyl": 0.0,
+  "Dexdor": 0.0,
+  "Ketamina": 0.0,
+  "Estazolam": 0.0,
+  "Tiopental": 0.0,
+  "opioidyInne": "",
+  "IsAntybiotyki": true,
+  "Antybiotyki": {
+    "isBetaLaktamy": true,
+    "BetaLaktamy": {
+      "Ampicylina": true,
+      "Amoksycylina": true,
+      "Kloksacylina": false,
+      "Augumentin": false,
+      "Piperacylina": false,
+      "inne": ""
+    },
+    "isCefalosporyny": true,
+    "Cefalosporyny": {
+      "Ceftriakson": false,
+      "Cefaleksyna": false,
+      "Cefpodoksym": false,
+      "Cefotaksym": false,
+      "Cefuroksym": false,
+      "Cefepim": false,
+      "inne": ""
+    },
+    "isKarbapenemy": true,
+    "Karbapenemy": {
+      "Meropenem": false
+    },
+    "isAminoglikozydy": true,
+    "Aminoglikozydy": {
+      "Gentamycyna": false,
+      "Tobramycyna": false,
+      "Amikacyna": false
+    },
+    "isChinolony": true,
+    "Chinolony": {
+      "Lewofloksacyna": false,
+      "Ciprofloksacyna": false,
+      "Moksyfloksacyna": false
+    },
+    "isTetracykliny": true,
+    "Tetracykliny": {
+      "Tygecyklina": false
+    },
+    "isNitromidazole": true,
+    "Nitromidazole": {
+      "MetronidazolIv": false,
+      "Metronidazolpo": false
+    },
+    "isLinkozamidy": true,
+    "Linkozamidy": {
+      "Klindamycyna": false
+    },
+    "isMakrolidy": true,
+    "Makrolidy": {
+      "Klarytromycyna": false,
+      "Azytromycyna": false
+    },
+    "isMonobaktamy": true,
+    "Monobaktamy": {
+      "Aztreonam": false
+    },
+    "isPrzeciwwirusowe": true,
+    "Przeciwwirusowe": {},
+    "isAzole": true,
+    "Azole": {
+      "Flukonazol": false,
+      "Worykonazol": false,
+      "Pozakonazol": false,
+      "Amfoterycyna": false
+    },
+    "isEchinokandydy": true,
+    "Echinokandydy": {
+      "Mikafungina": false
+    },
+    "isAntybiotykiInne": true,
+    "AntybiotykiInne": {
+      "Biseptol": true,
+      "Ryfaksymina": true,
+      "Linezolid": true,
+      "Fosfomycyna": false,
+      "inne": ""
+    }
+  },
+  "IsZywienieEN": true,
+  "ZywienieEN": {
+    "dojelitowego": 0.0,
+    "procentCelu": 0.0,
+    "iloscWMl": 0.0,
+    "PrzeplywWMl": 0.0,
+    "wymioty": false,
+    "zalegania": false,
+    "naCzczo": false,
+    "krwawienie": true,
+    "inneZaburzenia": false,
+    "Peptamen": true,
+    "Diason": true,
+    "FresubinHPFibre": true,
+    "NutrisonProtein": true,
+    "glukoza5": true,
+    "Peptisorb": true,
+    "Impact": true,
+    "FresubinHPEnergy": true,
+    "Inne": ""
+  },
+  "isZywienieTPN": true,
+  "ZywienieTPN": {
+    "iloscZywienia": 0.0,
+    "Przeplyw": 0.0,
+    "Standard01": false,
+    "Standard02": false,
+    "Standard03": false,
+    "Standard04": false,
+    "Hepa01": false,
+    "Hepa02": true,
+    "Hepa03": false,
+    "Hepa04": false,
+    "Nephro01": false,
+    "Nephro02": false,
+    "Nephro03": false,
+    "Nephro04": false,
+    "StartNephro": false,
+    "StartStandard": false,
+    "StartHepa": false,
+    "Inne": ""
+  },
+  "isZywienieDoustna": true,
+  "ZywienieDoustna": {
+    "iloscZywienia": 0.0
+  },
+  "isZywienieNPO": true,
+  "isZywienieDodatkowaWoda": true,
+  "ZywienieDodatkowaWoda": {
+    "ileMl": 0.0
+  },
+  "jesc": true,
+  "pic": true,
+  "zglebnikNos": false,
+  "zglebnikUsta": false,
+  "zglebnikPEG": false,
+  "zglebnikBrak": true,
+  "Stolec": {
+    "wyproznienie": true,
+    "iloscWyproznienia": 0.0,
+    "bristolskaWiekszaNiz6": true,
+    "krew": true,
+    "Flexiseal": true
+  },
+  "isOstatniDzien": true,
+  "OstatniDzien": {
+    "zgon": false,
+    "wypis": false,
+    "innyOddzial": false,
+    "DPS": false,
+    "dom": true,
+    "inne": false
+  }
+}

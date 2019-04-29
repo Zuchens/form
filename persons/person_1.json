@@ -1,0 +1,32 @@
+{
+  "id": 0,
+  "dataPrzyjecia": {
+    "year": 2019,
+    "month": 4,
+    "day": 27
+  },
+  "dataPrzyjeciaDoOiT": {
+    "year": 2019,
+    "month": 4,
+    "day": 27
+  },
+  "dataIntubacji": {
+    "year": 2019,
+    "month": 4,
+    "day": 30
+  },
+  "intubacja": false,
+  "wiek": 1,
+  "plecMeska": false,
+  "plecKobieta": true,
+  "wzrost": 133,
+  "waga": 55.0,
+  "punktacjaApache": 1,
+  "kodRozpoznania": 0,
+  "przyjetySor": true,
+  "blokOperacyjny": false,
+  "innyOddzial": false,
+  "innySzpital": false,
+  "dps": false,
+  "obciazeniaPrzyPrzyjeciu": ""
+}
