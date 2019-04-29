@@ -9,6 +9,16 @@ public class ZywienieEN {
     public boolean zalegania;
     public boolean naCzczo;
     public boolean krwawienie;
+    public boolean inneZaburzenia;
+
     public boolean Peptamen;
     public boolean Diason;
+    public boolean FresubinHPFibre;
+    public boolean NutrisonProtein;
+    public boolean glukoza5;
+    public boolean Peptisorb;
+    public boolean Impact;
+    public boolean FresubinHPEnergy;
+    public String Inne;
+
 }

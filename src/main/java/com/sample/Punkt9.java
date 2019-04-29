@@ -29,17 +29,24 @@ public class Punkt9 {
 
 
     public static void punkt9(VerticalLayout layout, Binder<Data> binder) {
-        CheckBox antybiotyki = twoCheckBoxes(layout, "Antybiotyki");
+        CheckBox antybiotyki = twoCheckBoxes(layout, "9. Antybiotyki");
         binder.forField(antybiotyki).bind(Data::isAntybiotyki, Data::setAntybiotyki);
 
         VerticalLayout hl = new VerticalLayout();
         ImmutableList<String> listBetaLaktamy = ImmutableList.of("Ampicylina", "Amoksycylina", "Kloksacylina", "Augumentin", "Piperacylina");
         Names namesBetaLaktamy = new Names(listBetaLaktamy, "beta-laktamy", "BetaLaktamy", "isBetaLaktamy");
-        doubleNested(hl, binder, namesBetaLaktamy);
+        VerticalLayout betaLaktamy = doubleNested(hl, binder, namesBetaLaktamy);
+        TextField betaLaktamyInne = new TextField();
+        addToLayout(betaLaktamy, betaLaktamyInne, "Inne", "0");
+        binder.forField(betaLaktamyInne).bind(x-> x.Antybiotyki.BetaLaktamy.getInne(),(x, y)-> x.Antybiotyki.BetaLaktamy.setInne(y));
+
 
         ImmutableList<String> listCefalosporyny = ImmutableList.of("Ceftriakson","Cefaleksyna","Cefpodoksym", "Cefotaksym", "Cefuroksym", "Cefepim");
         Names namesCefalosporyny = new Names(listCefalosporyny, "Cefalosporyny", "Cefalosporyny", "isCefalosporyny");
-        doubleNested(hl, binder, namesCefalosporyny);
+        VerticalLayout Cefalosporyny = doubleNested(hl, binder, namesCefalosporyny);
+        TextField CefalosporynyInne = new TextField();
+        addToLayout(Cefalosporyny, CefalosporynyInne, "Inne", "0");
+        binder.forField(CefalosporynyInne).bind(x-> x.Antybiotyki.Cefalosporyny.getInne(),(x, y)-> x.Antybiotyki.Cefalosporyny.setInne(y));
 
         ImmutableList<String> listKarbapenemy = ImmutableList.of("Meropenem");
         Names namesKarbapenemy = new Names(listKarbapenemy, "Karbapenemy", "Karbapenemy", "isKarbapenemy");
@@ -86,6 +93,14 @@ public class Punkt9 {
         doubleNested(hl, binder, namesEchinokandydy);
 
 
+        ImmutableList<String> listAntybiotykiInne = ImmutableList.of("Biseptol", "Ryfaksymina","Linezolid", "Fosfomycyna");
+        Names namesAntybiotykiInne = new Names(listAntybiotykiInne, "Inne antybiotyki", "AntybiotykiInne", "isAntybiotykiInne");
+        VerticalLayout antybiotykiInne = doubleNested(hl, binder, namesAntybiotykiInne);
+        TextField antybiotykiInneInne = new TextField();
+        addToLayout(antybiotykiInne, antybiotykiInneInne, "Inne", "0");
+        binder.forField(antybiotykiInneInne).bind(x-> x.Antybiotyki.AntybiotykiInne.getInne(),(x, y)-> x.Antybiotyki.AntybiotykiInne.setInne(y));
+
+
         hl.setVisible(false);
         layout.addComponent(hl);
         antybiotyki.addValueChangeListener(
@@ -100,7 +115,7 @@ public class Punkt9 {
         );
     }
 
-    static void doubleNested(VerticalLayout layout, Binder<Data> binder, Names names) {
+    static VerticalLayout doubleNested(VerticalLayout layout, Binder<Data> binder, Names names) {
         CheckBox betaLaktamy = twoCheckBoxes(layout, names.showText);
         betaLaktamy.setValue(false);
         setNestedClassFromName(betaLaktamy, binder,"Antybiotyki", names.booleanName);
@@ -122,6 +137,7 @@ public class Punkt9 {
         );
         h2.setVisible(false);
         layout.addComponent(h2);
+        return h2;
     }
 
     static void setNestedCheckboxes(VerticalLayout h2, Binder<Data> binder, String dataField, String fieldName, String fieldName2) {
@@ -159,6 +175,7 @@ public class Punkt9 {
 
 
     static void setNestedClassFromName(AbstractField betaLaktamy, Binder<Data> binder,String dataField, String fieldName) {
+
         binder.forField(betaLaktamy)
                 .bind(x-> {
                     try {

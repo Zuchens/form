@@ -18,10 +18,10 @@ public class Patient {
     int kodRozpoznania;
     boolean przyjetySor;
     boolean blokOperacyjny;
-    //TODO  jaki?
     boolean innyOddzial;
     boolean innySzpital;
-    LocalDate innySzpitalDate;
+
+    LocalDate innySzpitalOdKiedy;
     boolean dps;
     String obciazeniaPrzyPrzyjeciu;
 
@@ -153,14 +153,6 @@ public class Patient {
         this.innySzpital = innySzpital;
     }
 
-    public LocalDate getInnySzpitalDate() {
-        return innySzpitalDate;
-    }
-
-    public void setInnySzpitalDate(LocalDate innySzpitalDate) {
-        this.innySzpitalDate = innySzpitalDate;
-    }
-
     public boolean isDps() {
         return dps;
     }
@@ -175,5 +167,13 @@ public class Patient {
 
     public void setObciazeniaPrzyPrzyjeciu(String obciazeniaPrzyPrzyjeciu) {
         this.obciazeniaPrzyPrzyjeciu = obciazeniaPrzyPrzyjeciu;
+    }
+
+    public LocalDate getInnySzpitalOdKiedy() {
+        return innySzpitalOdKiedy;
+    }
+
+    public void setInnySzpitalOdKiedy(LocalDate innySzpitalOdKiedy) {
+        this.innySzpitalOdKiedy = innySzpitalOdKiedy;
     }
 }

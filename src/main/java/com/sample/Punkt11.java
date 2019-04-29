@@ -7,7 +7,7 @@ import com.vaadin.ui.Layout;
 import com.vaadin.data.Binder;
 import com.vaadin.ui.VerticalLayout;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.sample.DataDay.add_label;
@@ -17,7 +17,7 @@ import static com.sample.Punkt9.setNestedClassFromName;
 
 public class Punkt11 {
     public static void punkt11(Layout layout, Binder<Data> binder) {
-        HashMap<String, String> field2name = new HashMap<>();
+        LinkedHashMap<String, String> field2name = new LinkedHashMap<>();
         field2name.put("wyproznienie", "Wypróżnienie");
         field2name.put("bristolskaWiekszaNiz6", "Czy któryś w stolców w skali bristolskiej był większy ≥ 6");
         field2name.put("krew", "Czy w którymś była krew?");

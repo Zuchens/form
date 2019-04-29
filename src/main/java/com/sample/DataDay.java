@@ -1,13 +1,18 @@
 package com.sample;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.annotation.WebServlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import com.sample.data.Data;
 import com.sample.data.Patient;
 import com.vaadin.annotations.Theme;
@@ -74,13 +79,14 @@ public class DataDay extends UI {
         return horizontalLayout;
     }
 
-    public static void add_label(Layout layout, String s) {
+    public static HorizontalLayout add_label(Layout layout, String s) {
         Label labelMessage = new Label(s);
         labelMessage.setWidth(LABEL_WIDTH, Unit.PIXELS);
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         horizontalLayout.setSpacing(true);
         horizontalLayout.addComponent(labelMessage);
         layout.addComponent(horizontalLayout);
+        return horizontalLayout;
     }
 
 
@@ -107,12 +113,36 @@ public class DataDay extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
-        //TODO checkbox zeby wypelnic danymi z poprzedniego dnia
         //TODO jesli chceckboxy wylaczone - wyzeruj
         VerticalLayout layout = new VerticalLayout();
         layout.setWidth(100, Unit.PERCENTAGE);
         setContent(layout);
         TextField id = punkt1(layout, binder);
+
+        id.setVisible(false);
+        TextField idUnbind = new TextField();
+        addToLayout(layout, idUnbind, "Id pacjenta", "0");
+
+        idUnbind.addValueChangeListener(event-> id.setValue(idUnbind.getValue()));
+
+        AtomicInteger maxValue = new AtomicInteger(lastDay(idUnbind));
+        idUnbind.addValueChangeListener(event-> maxValue.set(lastDay(idUnbind)));
+        CheckBox poprzedni = new CheckBox(String.format("Ostatni znaleziony dzień pacjenta %s to %d. Czy Chcesz załadować dane z tego dnia jako podstawę dnia następnego?", idUnbind.getValue(), maxValue.get()));
+        layout.addComponent(poprzedni);
+        poprzedni.setVisible(false);
+        HorizontalLayout newDay = add_label(layout, "Pacjent nie ma jeszcze zarejestrowanego żadnego dnia");
+        idUnbind.addValueChangeListener(event -> {
+                    if (lastDay(idUnbind) == -1) {
+                        poprzedni.setVisible(false);
+                        newDay.setVisible(true);
+                    } else {
+                        poprzedni.setVisible(true);
+                        newDay.setVisible(false);
+                    }
+        });
+
+
+        idUnbind.addValueChangeListener(event-> poprzedni.setCaption(String.format("Ostatni znaleziony dzień pacjenta %s to %d. Czy Chcesz załadować dane z tego dnia?", idUnbind.getValue(), maxValue.get())));
 
         VerticalLayout horizontalLayout = new VerticalLayout();
         Label labelMessage = new Label("Nowy Pacjent");
@@ -127,8 +157,7 @@ public class DataDay extends UI {
         Label pacjentWBazieMsg = hiddentMessage(layout, "Pacjent już w bazie");
         id.addValueChangeListener(
                 event->{
-                    System.out.println("person_"+id.getValue()+".json");
-                    File f = new File("person_"+id.getValue()+".json");
+                    File f = new File("persons\\person_"+idUnbind.getValue()+".json");
                     if(!f.exists()) {
                         horizontalLayout.setVisible(true);
                         pacjentWBazieMsg.setVisible(false);
@@ -138,7 +167,7 @@ public class DataDay extends UI {
                     }
                 }
         );
-        dayView(layout, binder);
+        TextField day = dayView(layout, binder);
         punkt2(layout,binder);
         punkt3(layout,binder);
         punkt4(layout,binder);
@@ -151,9 +180,62 @@ public class DataDay extends UI {
         punkt11(layout, binder);
         punkt12(layout, binder);
         layout.addComponent(createButton());
-        id.focus();
+        idUnbind.focus();
         binderPatient.setBean(new Patient());
+
+
+        day.addValueChangeListener(event->{
+            String name = String.format("days\\day_%s_%s.json", idUnbind.getValue(), day.getValue());
+            File f = new File(name);
+            if (f.exists()){
+                bindFromFile(name);
+            }
+        });
+
+        poprzedni.addValueChangeListener(event->{
+            if(poprzedni.getValue()) {
+                String name =String.format("days\\day_%s_%s.json", idUnbind.getValue(), maxValue.get());
+                bindFromFile(name);
+                day.setValue(String.valueOf(Integer.valueOf(day.getValue()) + 1));
+
+            }
+    });
         binder.setBean(new Data());
+    }
+
+    private void bindFromFile(String name) {
+        Gson gson = new Gson();
+        JsonReader reader = null;
+
+        try {
+            reader = new JsonReader(new FileReader(name));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Data data = gson.fromJson(reader, Data.class);
+        binder.setBean(data);
+    }
+
+    private int lastDay(TextField id) {
+        int maxValue = -1;
+        try (Stream<Path> paths = Files.walk(Paths.get("days"))) {
+            for(Path path : paths.collect(Collectors.toList())){
+                String name = String.format("days\\day_%s_", id.getValue());
+                System.out.println(name);
+                if(path.toString().startsWith(name)){
+                    String p = path.toString().replace(name, "");
+                    p = p.replace(".json", "");
+                    System.out.println(p);
+                    Integer value = Integer.valueOf(p);
+                    if(value > maxValue){
+                        maxValue = value;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return maxValue;
     }
 
     private Label hiddentMessage(Layout layout, String message) {
@@ -174,7 +256,7 @@ public class DataDay extends UI {
 
     // other
     private Button createButton() {
-        Button button = new Button("Zapisz", event -> save());
+        Button button = new Button("Zapisz dzień", event -> save());
         button.addStyleName(ValoTheme.BUTTON_PRIMARY);
         button.setWidth(WIDTH, Unit.PIXELS);
         return button;
@@ -192,7 +274,7 @@ public class DataDay extends UI {
             String json = gson.toJson(data);
 
             try {
-                FileWriter writer = new FileWriter("person_"+ binder.getBean().getId()+".json");
+                FileWriter writer = new FileWriter("persons/person_"+ binder.getBean().getId()+".json");
                 writer.write(json);
                 writer.close();
 
@@ -235,7 +317,7 @@ public class DataDay extends UI {
             String json = gson.toJson(data);
 
             try {
-                FileWriter writer = new FileWriter("day_"+ data.getId()+"_"+ data.getDay()+".json");
+                FileWriter writer = new FileWriter("days/day_"+ data.getId()+"_"+ data.getDay()+".json");
                 writer.write(json);
                 writer.close();
 

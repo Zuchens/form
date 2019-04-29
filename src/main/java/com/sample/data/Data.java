@@ -86,7 +86,15 @@ public class Data {
     public float Ketamina;
     public float Estazolam;
     public float Tiopental;
+    public String opioidyInne;
 
+    public String getOpioidyInne() {
+        return opioidyInne;
+    }
+
+    public void setOpioidyInne(String opioidyInne) {
+        this.opioidyInne = opioidyInne;
+    }
 
     public boolean IsAntybiotyki;
     public Antybiotyki Antybiotyki = new Antybiotyki();
@@ -125,6 +133,44 @@ public class Data {
 
     public boolean jesc;
     public boolean pic;
+
+    public boolean zglebnikNos;
+
+    public boolean isZglebnikNos() {
+        return zglebnikNos;
+    }
+
+    public void setZglebnikNos(boolean zglebnikNos) {
+        this.zglebnikNos = zglebnikNos;
+    }
+
+    public boolean isZglebnikUsta() {
+        return zglebnikUsta;
+    }
+
+    public void setZglebnikUsta(boolean zglebnikUsta) {
+        this.zglebnikUsta = zglebnikUsta;
+    }
+
+    public boolean isZglebnikPEG() {
+        return zglebnikPEG;
+    }
+
+    public void setZglebnikPEG(boolean zglebnikPEG) {
+        this.zglebnikPEG = zglebnikPEG;
+    }
+
+    public boolean isZglebnikBrak() {
+        return zglebnikBrak;
+    }
+
+    public void setZglebnikBrak(boolean zglebnikBrak) {
+        this.zglebnikBrak = zglebnikBrak;
+    }
+
+    public boolean zglebnikUsta;
+    public boolean zglebnikPEG;
+    public boolean zglebnikBrak;
 
     public Stolec Stolec = new Stolec();
 

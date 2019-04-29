@@ -42,4 +42,7 @@ public class Antybiotyki {
     public boolean isEchinokandydy;
     public Echinokandydy Echinokandydy = new Echinokandydy();
 
+    public boolean isAntybiotykiInne;
+    public AntybiotykiInne AntybiotykiInne = new AntybiotykiInne();
+
 }

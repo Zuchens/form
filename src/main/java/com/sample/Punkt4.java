@@ -8,7 +8,7 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import static com.sample.DataDay.add_label;
 import static com.sample.Punkt2.twoCheckBoxes;
@@ -16,7 +16,7 @@ import static com.sample.Punkt2.twoCheckBoxes;
 public class Punkt4 {
 
     public static void punkt4(VerticalLayout layout, Binder<Data> binder) {
-        HashMap<String, String> field2name = new HashMap<>();
+        LinkedHashMap<String, String> field2name = new LinkedHashMap<>();
         field2name.put("rehabilitacja", "Rehabilitacja");
 
         add_label(layout, "4. Rehabilitacja");
@@ -24,7 +24,7 @@ public class Punkt4 {
         doubleCheckboxFromString(layout, binder, "rehabilitacja", field2name);
     }
 
-    public static CheckBox doubleCheckboxFromString(Layout layout, Binder<Data> binder, String name, HashMap<String, String> field2name) {
+    public static CheckBox doubleCheckboxFromString(Layout layout, Binder<Data> binder, String name, LinkedHashMap<String, String> field2name) {
         CheckBox rehabilitacja = twoCheckBoxes(layout, field2name.getOrDefault(name, name));
         binder.forField(rehabilitacja).bind(
                 x-> {

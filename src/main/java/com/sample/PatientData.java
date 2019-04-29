@@ -13,18 +13,50 @@ public class PatientData {
 
     public static void addPatientData(VerticalLayout layout, Binder<Patient> binder) {
 
-
+        dataPrzyjecia(layout, binder);
+        dataPrzyjeciaDoOiT(layout, binder);
+        dataIntubacji(layout, binder);
+        plec(layout, binder);
         wiek(layout, binder);
         wzrost(layout, binder);
         waga(layout, binder);
         puntakcjaApache(layout, binder);
         kodRozpoznania(layout, binder);
         pochodzeniePacjenta(layout, binder);
+        obciazenia(layout, binder);
 
 
     }
 
+    private static HorizontalLayout obciazenia(VerticalLayout layout, Binder<Patient> binder) {
+        TextField id = new TextField();
+        HorizontalLayout lay = addToLayout(layout, id, "Obciążenia przy przyjęciu", "0");
+        binder.forField(id)
+                .bind(Patient::getObciazeniaPrzyPrzyjeciu, Patient::setObciazeniaPrzyPrzyjeciu);
+        return lay;
+    }
+
+
+    private static HorizontalLayout plec(VerticalLayout layout, Binder<Patient> binder) {
+        Label labelMessage = new Label("Płeć");
+        layout.addComponent(labelMessage);
+        CheckBox kobieta = new CheckBox("Kobieta");
+        binder.forField(kobieta).bind(Patient::isPlecKobieta, Patient::setPlecKobieta);
+        CheckBox mezczyzna = new CheckBox("Mężczyzna");
+        binder.forField(mezczyzna).bind(Patient::isPlecMeska, Patient::setPlecMeska);
+        Punkt12.exclude(kobieta, mezczyzna);
+        Punkt12.exclude(mezczyzna, kobieta);
+
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        horizontalLayout.setSpacing(true);
+        horizontalLayout.addComponent(kobieta);
+        horizontalLayout.addComponent(mezczyzna);
+        layout.addComponent(horizontalLayout);
+        return horizontalLayout;
+    }
     private static HorizontalLayout pochodzeniePacjenta(VerticalLayout layout, Binder<Patient> binder) {
+        Label labelMessage = new Label("Pacjent przyjęty z:");
+        layout.addComponent(labelMessage);
         CheckBox przyjetySor = new CheckBox("SOR");
         binder.forField(przyjetySor).bind(Patient::isPrzyjetySor, Patient::setPrzyjetySor);
         CheckBox blokOperacyjny = new CheckBox("Inny oddział");
@@ -43,6 +75,7 @@ public class PatientData {
         exclude(dps, przyjetySor, blokOperacyjny, innyOddzial, innySzpital);
 
 
+
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         horizontalLayout.setSpacing(true);
         horizontalLayout.addComponent(przyjetySor);
@@ -51,6 +84,22 @@ public class PatientData {
         horizontalLayout.addComponent(innySzpital);
         horizontalLayout.addComponent(dps);
         layout.addComponent(horizontalLayout);
+
+
+        DateField czasInnySzpital = new DateField();
+        HorizontalLayout lay = addToLayout(layout, czasInnySzpital, "Od kiedy?", "0");
+        binder.forField(czasInnySzpital)
+                .bind(Patient::getInnySzpitalOdKiedy, Patient::setInnySzpitalOdKiedy);
+        lay.setVisible(false);
+        innySzpital.addValueChangeListener(event->{
+            if(innySzpital.getValue()) {
+                lay.setVisible(true);
+            }else{
+                lay.setVisible(false);
+            }
+        });
+
+
         return horizontalLayout;
     }
 
@@ -71,7 +120,32 @@ public class PatientData {
                 .bind(Patient::getDataPrzyjecia, Patient::setDataPrzyjecia);
         return lay;
     }
+    private static HorizontalLayout dataIntubacji(VerticalLayout layout, Binder<Patient> binder) {
+        CheckBox przyjetyOiT = new CheckBox("Czy intubacja");
+        layout.addComponent(przyjetyOiT);
+        DateField id = new DateField();
+        HorizontalLayout lay = addToLayout(layout, id, "Data intubacji", "0");
+        binder.forField(id)
+                .bind(Patient::getDataIntubacji, Patient::setDataIntubacji);
+        lay.setVisible(false);
+        przyjetyOiT.addValueChangeListener(event->{
+            if(przyjetyOiT.getValue()) {
+                lay.setVisible(true);
+            }else{
+                lay.setVisible(false);
+            }
+        });
+        return lay;
+    }
 
+    private static HorizontalLayout dataPrzyjeciaDoOiT(VerticalLayout layout, Binder<Patient> binder) {
+        DateField id = new DateField();
+        HorizontalLayout lay = addToLayout(layout, id, "Data przyjęcia do OiT", "0");
+        binder.forField(id)
+                .bind(Patient::getDataPrzyjeciaDoOiT, Patient::setDataPrzyjeciaDoOiT);
+        return lay;
+
+    }
     private static HorizontalLayout wiek(VerticalLayout layout, Binder<Patient> binder) {
         TextField id = new TextField();
         HorizontalLayout lay = addToLayout(layout, id, "Wiek [lata]", "0");

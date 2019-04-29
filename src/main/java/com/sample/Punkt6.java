@@ -4,7 +4,7 @@ import com.sample.data.Data;
 import com.vaadin.data.Binder;
 import com.vaadin.ui.VerticalLayout;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import static com.sample.DataDay.add_label;
 import static com.sample.Punkt4.doubleCheckboxFromString;
@@ -12,7 +12,7 @@ import static com.sample.Punkt4.doubleCheckboxFromString;
 public class Punkt6 {
 
     public static void punkt6(VerticalLayout layout, Binder<Data> binder) {
-        HashMap<String, String> field2name = new HashMap<>();
+        LinkedHashMap<String, String> field2name = new LinkedHashMap<>();
         field2name.put("infekcjaOddechowa", "oddechowej");
         field2name.put("infekcjaKrwiopochodna", "krwiopochodnej");
         field2name.put("infekcjaJamyBrzusznej", "jamy brzusznej");

@@ -6,7 +6,7 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.sample.DataDay.add_label;
@@ -29,7 +29,7 @@ public class Punkt12 {
         layout.addComponent(h1);
         VerticalLayout h2 = new VerticalLayout();
         h2.setVisible(false);
-        HashMap<String, String> map2 = new HashMap();
+        LinkedHashMap<String, String> map2 = new LinkedHashMap();
         map2.put("innyOddzial", "inny oddział");
         map2.put("DPS", "DPS");
         map2.put("dom", "dom");
@@ -66,7 +66,7 @@ public class Punkt12 {
         );
     }
 
-    private static void exclude(CheckBox check, CheckBox check2) {
+    public static void exclude(CheckBox check, CheckBox check2) {
         check.addValueChangeListener(
                 event ->{
                     if(check.getValue()) {

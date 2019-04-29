@@ -77,7 +77,7 @@ public class Punkt2 {
         return horizontalLayout;
     }
 
-    private static void exclude(CheckBox ihd, CheckBox cvvhd, CheckBox cvvhf, CheckBox cvvhdf) {
+    public static void exclude(CheckBox ihd, CheckBox cvvhd, CheckBox cvvhf, CheckBox cvvhdf) {
         ihd.addValueChangeListener(event ->{
             if(ihd.getValue()){
                 cvvhd.setValue(false);

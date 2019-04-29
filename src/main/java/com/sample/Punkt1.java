@@ -18,7 +18,7 @@ public class Punkt1 {
         return id;
     }
 
-    public static void dayView(VerticalLayout layout, Binder<Data> binder) {
+    public static TextField dayView(VerticalLayout layout, Binder<Data> binder) {
         TextField day = day(layout, binder);
         HorizontalLayout czas = czas_trwania_doby(layout, day, binder);
         day.addValueChangeListener(event ->{
@@ -28,6 +28,7 @@ public class Punkt1 {
                 czas.setVisible(false);
             }
         });
+        return day;
     }
 
     private static HorizontalLayout czas_trwania_doby(VerticalLayout layout, TextField day, Binder<Data> binder) {
@@ -42,13 +43,10 @@ public class Punkt1 {
     }
     private static TextField patientId(VerticalLayout layout, Binder<Data> binder) {
         TextField id = new TextField();
-        addToLayout(layout, id, "Id pacjenta", "0");
-        binder.forField(id).asRequired("Id pacjenta nie moze byc puste")
+        addToLayout(layout, id, "", "0");
+        binder.forField(id).asRequired("")
                 .withConverter(
                         new StringToIntegerConverter("Id pacjenta musi byc liczba"))
-                .withValidationStatusHandler(
-                        status -> commonStatusChangeHandler(status,
-                                id))
                 .bind(Data::getId, Data::setId);
         return id;
     }
